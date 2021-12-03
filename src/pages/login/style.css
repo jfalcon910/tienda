@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+}
+.containerLogin{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+.containerLogin .boxLogin{
+    display: flex;
+    flex-flow: column wrap;
+    border-radius: 12px;
+    background: #64695D;
+    width: 400px;
+    align-items: center;
+    padding: 20px 0;
+    margin: 0 auto;
+}
+.containerLogin .boxLogin img{
+    width: 80px;
+    border-radius: 50%;
+}
+.containerLogin .boxLogin h3{
+    margin: 20px 0;
+    color: #fff
+}
+.containerLogin .boxLogin .rowLogin input{
+    margin-bottom: 20px;
+    padding: 10px 5px;
+    border: 0;
+    border-radius: 8px;
+}
+.containerLogin .boxLogin .rowLogin button{
+    border: 0;
+    background: #000;
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: .2s all ease;
+}
+.containerLogin .boxLogin .rowLogin button:hover{
+    background: #730685;
+}
+
