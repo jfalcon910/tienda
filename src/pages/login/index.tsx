@@ -16,7 +16,7 @@ const Login = () => {
                     </div>
                     <div className="rowLogin">
                         <input 
-                            type="text" 
+                            type="password" 
                             placeholder="Password"
                             name="password" 
                             // onChange={changeInput}

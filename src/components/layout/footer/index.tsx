@@ -1,10 +1,16 @@
 import React from 'react'
+import './style.css'
 
 const Footer = () => {
     return (
-        <>
-            <h3>footer</h3>
-        </>
+        <footer>
+            <div className="containerFooter">
+                <div className="columnFooter">
+                    <span>Desarrollado por Festejo</span>
+                </div>
+            </div>
+            
+        </footer>
     )
 }
 
