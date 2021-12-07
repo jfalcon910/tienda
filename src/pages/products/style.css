@@ -1,5 +1,6 @@
 .products{
-  padding-top: 20px;
+  padding: 20px 40px;
+  width: calc(100% - 150px);
 }
 .products h3{
   margin:  0;

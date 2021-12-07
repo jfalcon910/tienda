@@ -1,0 +1,26 @@
+.sidebar{
+    padding: 20px 10px;
+    width: 150px;
+    background-color: #000;
+}
+.sidebar ul{
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+.sidebar ul li:last-child{
+    margin-bottom: 0;
+}
+.sidebar ul li svg{
+    color: #fff;
+    font-size: 20px;
+}
+.sidebar ul li a{
+    text-decoration: none;
+    color: #fff;
+    margin-left: 5px;
+    font-size: 16px;
+}
