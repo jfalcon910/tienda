@@ -1,3 +1,7 @@
+#root{
+  position: relative;
+  height: 100vh;
+}
 .products{
   padding: 20px 40px;
   width: calc(100% - 150px);
@@ -5,6 +9,9 @@
 .products h3{
   margin:  0;
   text-align: center;
+}
+.products .table {
+  margin-top: 20px;
 }
 .products .table thead tr th{
   text-align: center;
@@ -17,4 +24,25 @@
 }
 .products .table tbody tr td .imgProduct{
   max-width: 100px;
+}
+
+.products .table tbody tr td button{
+  border: 0;
+  background: #000;
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: .2s all ease;
+  margin-right: 10px;
+}
+.products .table tbody tr td button:hover{
+  background: #2C2C2C;
+}
+.products .table tbody tr td button:last-child{
+  margin-right: 0;
+}
+.products .table tbody tr td button svg{ 
+  margin-right: 5px;
+  margin-top: -4px;
 }

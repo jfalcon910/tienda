@@ -5,8 +5,13 @@ export interface LoginInterface{
 
 export interface LoginRequest{
   message: string;
-  error: string;
+  token: string;
   status: boolean;
+  userData: string;
+}
+
+export interface LoginRes{
   request: string;
-  countRecords?: number;
+  result: LoginRequest;
+  status: boolean;
 }
