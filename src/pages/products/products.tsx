@@ -1,20 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import WrapperContent from '../../components/layout/wrapperContent'
 import './style.css'
 import Security from '../../components/layout/protected/index';
 import {FaTrash, FaPencilAlt} from "react-icons/fa";
 import { productApi } from '../../services/productApi';
-import { GlobalRequestResult } from '../../interface';
+import { GlobalRequestResult, ProductInterface } from '../../interface';
+import { useNavigate } from 'react-router-dom';
 
 const Products = () => {
+  let navigate = useNavigate();
+  const [data, setData] = useState<ProductInterface[]>([]);
+  useEffect(() => {
+    getData();
+  }, [])
+
+  const getData = async() =>{
+    const req:any = await productApi.get('/');
+    const {data} = req;
+    const {result} = data;
+    setData(result);
+  }
   const deleteProduct = async(idProduct:any) => {
     try {
       const conf = window.confirm("¿Desea Eliminar el Producto?");
       if(conf){
-        const {data} = await productApi.put<GlobalRequestResult>('')
+        const {data} = await productApi.put<GlobalRequestResult>(`/delete/${idProduct}`);
+        console.log(data);
+        const {status, result} = data;
+        if(status){
+          alert(result);
+          getData();
+        }
       }
-    } catch (error) {
-      
+    } catch (error:any) {
+      alert(error.response.data.result)
     }
   }
   return (
@@ -35,54 +54,24 @@ const Products = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Ricocat</td>
-                <td>1 kilo</td>
-                <td>5</td>
-                <td>distribuidor vecino</td>
-                <td><img className="imgProduct" src={'https://plazavea.vteximg.com.br/arquivos/ids/347433-450-450/20019999.jpg'} alt="" /></td>
-                <td>10.00</td>
-                <td>
-                  <button> <FaPencilAlt/>Editar</button>
-                  <button> <FaTrash />Eliminar</button>
-                </td>
-              </tr>
-              <tr>
-                <td>Ricocat</td>
-                <td>1 kilo</td>
-                <td>5</td>
-                <td>distribuidor vecino</td>
-                <td><img className="imgProduct" src={'https://plazavea.vteximg.com.br/arquivos/ids/347433-450-450/20019999.jpg'} alt="" /></td>
-                <td>10.00</td>
-                <td>
-                  <button>Editar</button>
-                  <button>Eliminar</button>
-                </td>
-              </tr>
-              <tr>
-                <td>Ricocat</td>
-                <td>1 kilo</td>
-                <td>5</td>
-                <td>distribuidor vecino</td>
-                <td><img className="imgProduct" src={'https://plazavea.vteximg.com.br/arquivos/ids/347433-450-450/20019999.jpg'} alt="" /></td>
-                <td>10.00</td>
-                <td>
-                  <button>Editar</button>
-                  <button>Eliminar</button>
-                </td>
-              </tr>
-              <tr>
-                <td>Ricocat</td>
-                <td>1 kilo</td>
-                <td>5</td>
-                <td>distribuidor vecino</td>
-                <td><img className="imgProduct" src={'https://plazavea.vteximg.com.br/arquivos/ids/347433-450-450/20019999.jpg'} alt="" /></td>
-                <td>10.00</td>
-                <td>
-                  <button>Editar</button>
-                  <button>Eliminar</button>
-                </td>
-              </tr>
+              {data.map((product, index)=>{
+                return(
+                  <tr key={product._id}>
+                    <td>{product.name}</td>
+                    <td>{product.description}</td>
+                    <td>{product.actualStock}</td>
+                    <td>{product.supplier.name}</td>
+                    <td><img className="imgProduct" src={product.photo} alt="" /></td>
+                    <td>{product.price}</td>
+                    <td>
+                      <div className="contentButtons d-flex">
+                        <button> <FaPencilAlt/>Editar</button>
+                        <button onClick={()=>{deleteProduct(product._id)}}> <FaTrash />Eliminar</button>
+                      </div>
+                    </td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>

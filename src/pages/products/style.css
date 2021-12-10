@@ -1,6 +1,5 @@
 #root{
   position: relative;
-  height: 100vh;
 }
 .products{
   padding: 20px 40px;
@@ -18,6 +17,7 @@
 }
 .products .table tbody tr td{
   text-align: center;
+  width: 185px;
 }
 .products .table tbody tr{
   vertical-align: middle;
@@ -35,6 +35,7 @@
   cursor: pointer;
   transition: .2s all ease;
   margin-right: 10px;
+  display: flex;
 }
 .products .table tbody tr td button:hover{
   background: #2C2C2C;
@@ -44,5 +45,5 @@
 }
 .products .table tbody tr td button svg{ 
   margin-right: 5px;
-  margin-top: -4px;
+  margin-top: 4px;
 }
