@@ -44,6 +44,7 @@ const Products = () => {
           <table className="table">
             <thead>
               <tr>
+                <th>Número</th>
                 <th>Nombre</th>
                 <th>Presentación</th>
                 <th>Stock</th>
@@ -57,6 +58,7 @@ const Products = () => {
               {data.map((product, index)=>{
                 return(
                   <tr key={product._id}>
+                    <td>{index+1}</td>
                     <td>{product.name}</td>
                     <td>{product.description}</td>
                     <td>{product.actualStock}</td>

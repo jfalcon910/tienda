@@ -21,6 +21,14 @@ export const Sidebar = Styled('div')`
                     color: #64695D
                 }
             }
+            &:.active{
+                a{
+                    color: #64695D
+                }
+                svg{
+                    color: #64695D
+                }
+            }
             svg{
                 color: #fff;
                 transition: .2s all ease;
